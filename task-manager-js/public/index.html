@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <div>
+          <h1>Task Manager</h1>
+          <p class="subtitle">Kelola tugas harianmu dengan mudah</p>
+        </div>
+      </div>
+      <p id="today" class="today"></p>
+    </header>
+
+    <section id="stats" class="stats" aria-live="polite" aria-label="Ringkasan tugas">
+      <div class="progress">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="ring-track" cx="50" cy="50" r="42"></circle>
+          <circle class="ring-bar" id="ring-bar" cx="50" cy="50" r="42"></circle>
+        </svg>
+        <div class="ring-text"><b id="stat-percent">0%</b><span>selesai</span></div>
+      </div>
+      <div class="figures">
+        <div class="stat"><b id="stat-total">0</b><span>Total</span></div>
+        <div class="stat"><b id="stat-todo">0</b><span>Belum selesai</span></div>
+        <div class="stat"><b id="stat-done">0</b><span>Selesai</span></div>
+        <div class="stat" id="stat-over-box"><b id="stat-over">0</b><span>Lewat tenggat</span></div>
+      </div>
+    </section>
+
+    <p id="message" class="message" role="alert" hidden></p>
+
+    <section class="card">
+      <h2>Tambah tugas</h2>
+      <form id="add-form" class="add-form">
+        <label class="field title-field">
+          <span>Judul tugas</span>
+          <input id="title" type="text" placeholder="Apa yang perlu dikerjakan?" required>
+        </label>
+        <label class="field">
+          <span>Prioritas</span>
+          <select id="priority">
+            <option value="low">Rendah</option>
+            <option value="medium" selected>Sedang</option>
+            <option value="high">Tinggi</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Tenggat</span>
+          <input id="due" type="date">
+        </label>
+        <button type="submit" class="primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          Tambah
+        </button>
+      </form>
+    </section>
+
+    <section class="card list-card">
+      <div class="list-head">
+        <h2>Daftar tugas</h2>
+        <span id="count" class="count" aria-live="polite"></span>
+      </div>
+      <div class="filters">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" type="search" placeholder="Cari judul..." aria-label="Cari">
+        </div>
+        <select id="f-status" aria-label="Filter status">
+          <option value="">Semua status</option>
+          <option value="todo">Belum selesai</option>
+          <option value="done">Selesai</option>
+        </select>
+        <select id="f-priority" aria-label="Filter prioritas">
+          <option value="">Semua prioritas</option>
+          <option value="high">Tinggi</option>
+          <option value="medium">Sedang</option>
+          <option value="low">Rendah</option>
+        </select>
+        <select id="f-sort" aria-label="Urutkan">
+          <option value="">Urutan dibuat</option>
+          <option value="due">Tenggat terdekat</option>
+          <option value="priority">Prioritas</option>
+        </select>
+      </div>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <dialog id="edit-dialog">
+    <form id="edit-form" method="dialog">
+      <h2>Ubah tugas</h2>
+      <label class="field">
+        <span>Judul tugas</span>
+        <input id="edit-title" type="text" required>
+      </label>
+      <div class="two">
+        <label class="field">
+          <span>Prioritas</span>
+          <select id="edit-priority">
+            <option value="low">Rendah</option>
+            <option value="medium">Sedang</option>
+            <option value="high">Tinggi</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Tenggat</span>
+          <input id="edit-due" type="date">
+        </label>
+      </div>
+      <div class="row end">
+        <button type="button" id="edit-cancel">Batal</button>
+        <button type="submit" class="primary">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "task-manager-js",
+  "version": "1.0.0",
+  "description": "Task manager berbasis web (Node.js + HTML/JS) dengan antarmuka CLI, dikembangkan dengan bantuan AI generatif - Tugas I 11S3133 Pengembangan Aplikasi Berbasis Web",
+  "main": "src/server.js",
+  "bin": {
+    "tasks": "src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "cli": "node src/cli.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.3.0"
+  },
+  "keywords": [
+    "task-manager",
+    "javascript",
+    "nodejs",
+    "cli",
+    "generative-ai",
+    "web",
+    "rest-api"
+  ],
+  "author": "Cahaya Raya Silaen (11S24017)",
+  "license": "MIT"
+}
