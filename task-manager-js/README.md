@@ -124,3 +124,5 @@ data/               file data tugas (tasks.json tidak di-commit)
 Kode awal dihasilkan oleh asisten AI, lalu diuji, dievaluasi, dan diperbaiki secara manual.
 Empat tes yang gagal pada versi awal (berasal dari tiga akar masalah: ID duplikat, validasi tanggal, pengurutan tenggat kosong)
 dijelaskan lengkap di proposal bagian *Debugging dan Perbaikan*.
+
+
